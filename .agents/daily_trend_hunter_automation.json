@@ -1,0 +1,23 @@
+{
+  "builtin": "schedule",
+  "args": [
+    "CRON_TZ=Europe/Berlin 0 9 * * *",
+    "agentapi",
+    "new-conversation",
+    "--",
+    "Using d:\\Money\\.agent\\skills\\tiktok-trend-hunter\\SKILL.md at $0 cost: first run `python d:\\Money\\scripts\\fetch_live_trends.py` to re-scan all sources in d:\\Money\\data\\trend_sources.json across the 4 connected pillars (movies, series, games, ai), then check telegram.interactive_mode in d:\\Money\\config.yaml and run `python d:\\Money\\scripts\\telegram_bot.py --send-cards-once` so the fresh pillar trend cards are delivered directly to Telegram (respecting the 1-2 daily video quota without auto-rendering or uploading)."
+  ],
+  "restart_policy": "always",
+  "display_name": "Viral Studio Pro — Daily Trend Hunter",
+  "description": "Every day at 9:00 AM (Europe/Berlin), re-scans data/trend_sources.json across movies, series, games, and AI trends and delivers interactive trend cards to Telegram.",
+  "agent_permissions": {
+    "workspace_uris": [
+      "file:///d:/Money"
+    ],
+    "access_grants": [
+      "command(python d:\\Money\\scripts\\fetch_live_trends.py)",
+      "command(python d:\\Money\\scripts\\telegram_bot.py --send-cards-once)",
+      "command(python d:\\Money\\scripts\\trend_history_manager.py)"
+    ]
+  }
+}

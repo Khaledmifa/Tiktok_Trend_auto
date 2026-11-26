@@ -1,0 +1,28 @@
+# Core Config & HTTP
+pyyaml>=6.0.2
+python-dotenv>=1.0.1
+requests>=2.32.3
+
+# Agent 1: Trend & Pattern Research (100% Free)
+yt-dlp>=2025.1.15
+youtube-transcript-api>=0.6.3
+duckduckgo-search>=7.0.0
+
+# Agent 2: Script & Hook Architect (Optional Gemini Free Tier)
+google-genai>=1.0.0
+
+# Agent 3: Media, Scene Splitting & Assembly (100% Free Local)
+kinocut==2.0.1
+scenedetect>=0.7.3
+opencv-python>=4.10.0
+edge-tts>=7.0.0
+Pillow>=11.0.0
+imageio-ffmpeg>=0.6.0
+
+# Interactive Telegram Bot & 2GB Uncompressed Delivery (100% Free Telethon MTProto)
+telethon>=1.36.0
+# Optional C accelerator for faster MTProto uploads (install when wheel is available)
+cryptg>=0.4.0
+
+# Optional Local GPU Transcription (Uncomment if needed on RTX GPU)
+# faster-whisper>=1.1.0

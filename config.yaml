@@ -1,0 +1,208 @@
+# ==============================================================================
+# Viral Studio Pro — Unified $0 Local TikTok Studio Configuration
+# ==============================================================================
+
+project:
+  name: "viral-studio-pro-tiktok"
+  channel_name: "Viral Studio Pro"
+  platform: "tiktok"
+  niche: "Movies, Series, Games, AI Trends"
+  positioning: "Understand what's happening—and what you missed—in movies, series, games, and AI."
+  language: "en" # Enforced: ALL produced videos must be 100% English ("en" only)
+  enforce_english_only: true
+  supported_languages:
+    - "en"
+  target_audience: "General Adult (18-45)"
+  runs_dir: "tiktok"
+  data_dir: "data"
+  assets_dir: "assets"
+  logs_dir: "logs"
+
+pipeline:
+  execution_mode: "local_zero_cost"
+  zero_cost_local_only: true
+  prefer_highres_video_broll: true
+  auto_harvest_ytdlp: true
+  media_intake_mode: "tiktok_folder_and_auto_harvest"
+  auto_reuse_tiktok_media_dir: true
+  default_scenes: 10
+  min_scenes: 10
+  max_scenes: 12
+  target_words_en: [155, 185]
+  max_visual_prompt_words: 15
+
+models:
+  video_mode: "cinematic_i2v_motion"
+  max_revision_rounds: 2
+
+video:
+  width: 2160
+  height: 3840
+  fps: 30
+  crf: 16
+  clip_crf: 14
+  harvest_max_height: 2160
+  min_duration_sec: 65
+  max_duration_sec: 85
+  hard_monetization_floor_sec: 61
+  seamless_loop: true
+  loop_tail_pad_sec: 0.08
+  cinematic_color_grade: true
+  ken_burns_zoom_end: 1.12
+  preferred_encoder: "h264_nvenc"
+  fallback_encoder: "libx264"
+
+editorial_hud:
+  enabled: true
+  brand_label: "VIRAL STUDIO PRO"
+  accent_color: "#CDFF43"
+  wide_panel_height: 608
+  wide_panel_y: 475
+  alternate_layouts: true
+  slowmo_factor: 0.87
+  double_cuts_per_scene: true
+  compact_context_badge: true
+  show_fact_card_only_when_distinct: true
+  default_footage_context: "OFFICIAL FOOTAGE"
+  default_attribution: "Official trailers & media | Commentary & analysis"
+
+sound_design:
+  enabled: true
+  sample_rate: 48000
+  bed_volume: 0.11
+  sfx_volume: 0.28
+  whoosh_every_n_cuts: 2
+  normalize_voiceover: true
+  target_lufs: -15.0
+  true_peak_db: -1.5
+  apply_limiter: true
+  seamless_loop: true
+
+research:
+  max_trends_per_run: 5
+  max_opportunities: 3
+  auto_top_trend_enabled: true
+  google_trends_geo: "US"
+  trends_queue_file: "data/trends_queue.json"
+  trend_sources_file: "data/trend_sources.json"
+  max_trend_queries: 6
+  topic_categories:
+    - "movies"
+    - "series"
+    - "games"
+    - "ai"
+  sources:
+    - "curated_trends_queue"
+    - "google_trends_rss"
+    - "duckduckgo_tiktok_trends"
+    - "rss"
+  tiktok_trend_queries:
+    - "trending movies trailer breakdown box office 2026"
+    - "trending streaming tv series episode theories 2026"
+    - "trending video games updates gameplay reveals 2026"
+    - "noteworthy AI creative capabilities gaming cinema 2026"
+  blocked_copyright_keywords:
+    - "full movie"
+    - "leaked clip"
+    - "music video"
+    - "official trailer"
+    - "live stream"
+    - "nfl highlights"
+    - "nba highlights"
+    - "ufc fight"
+    - "celebrity gossip"
+    - "deepfake"
+    - "movie scene"
+    - "tv episode"
+    - "reupload"
+    - "hardware review"
+    - "unboxing"
+    - "shopping guide"
+  rss_feeds:
+    - "https://variety.com/v/film/feed/"
+    - "https://deadline.com/v/tv/feed/"
+    - "https://www.ign.com/rss/articles/feed"
+    - "https://www.eurogamer.net/feed"
+    - "https://techcrunch.com/category/artificial-intelligence/feed/"
+    - "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
+    - "https://openai.com/news/rss.xml"
+    - "https://deepmind.google/blog/rss.xml"
+  search_queries:
+    - "trending movies trailer hidden details analysis 2026"
+    - "trending streaming series theories upcoming releases 2026"
+    - "trending video games major updates gameplay changes 2026"
+    - "AI trends creative demos movies gaming impact 2026"
+
+tts:
+  provider: "edge_tts"
+  voices:
+    en: "en-US-AndrewNeural"
+  rate: "+4%"
+  pitch: "-2Hz"
+
+subtitles:
+  enabled: true
+  burn_in: true
+  font_name: "Arial"
+  font_size: 57
+  bold: true
+  uppercase: false
+  active_word_highlight: true
+  pop_animation: false
+  primary_color: "&H00FFFFFF"
+  highlight_color: "&H0043FFCD"
+  power_color: "&H0043FFCD"
+  outline_color: "&H00000000"
+  outline_width: 4
+  shadow_depth: 2
+  margin_v: 580
+  caption_center_x: 505
+  caption_center_y: 1300
+  use_fixed_position: true
+  words_per_caption_chunk: 4
+  max_line_width_px: 790
+  max_lines: 2
+  break_on_sentence_boundary: true
+
+qa_and_publish:
+  require_human_approval: true
+  ai_generated_disclosure: true
+  max_similarity_threshold: 0.55
+  tiktok:
+    export_bundle: true
+    export_dir: "tiktok"
+    generate_publish_kit: true
+    manual_upload_only: true
+    allow_auto_public_upload: false
+    disclose_ai_content: true
+    creator_rewards_min_sec: 61
+
+telegram:
+  enabled: true
+  interactive_mode: true
+  transport: "telethon_mtproto"
+  session_file: "data/viral_studio_bot.session"
+  review_mode: "streamable_preview" # "streamable_preview" (playable video on review -> uncompressed master on Approve) or "raw_document"
+  send_raw_on_review: false # true = send full uncompressed final_9x16.mp4 as document immediately on review
+  send_as_document: true # true = force_document=True (uncompressed raw 4K master up to 2 GB via MTProto)
+  max_upload_mb: 1950 # Telethon MTProto supports up to 2 GB (no 50 MB Bot API compression cap)
+  progress_log_threshold_mb: 50
+  prefer_nvenc: true
+  auto_notify_on_ready: true
+  daily_video_quota: 2
+  max_auto_edit_rounds: 3
+  ai_escalation_queue_file: "data/ai_escalation_queue.json"
+  cleanup_chat_on_quota_complete: true
+  daily_schedule_cron: "0 9 * * *"
+  daily_schedule_tz: "Europe/Berlin"
+  pool_size_per_category: 5
+  card_send_delay_sec: 1.0
+  categories:
+    - key: "movies"
+      label_ar: "أفلام"
+    - key: "series"
+      label_ar: "مسلسلات"
+    - key: "games"
+      label_ar: "ألعاب"
+    - key: "ai"
+      label_ar: "ذكاء اصطناعي"

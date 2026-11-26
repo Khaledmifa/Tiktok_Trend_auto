@@ -1,0 +1,34 @@
+# Secrets & Credentials
+.env
+client_secrets.json
+token.json
+*.session*
+
+# Python & Local Runtimes / Virtual Environments
+.venv/
+venv/
+Python/
+__pycache__/
+*.py[cod]
+
+# Generated Media Outputs, Local State & Logs
+tiktok/
+output/
+data/
+logs/
+*.mp4
+*.mkv
+*.webm
+*.mov
+*.avi
+*.mp3
+*.wav
+*.log
+*.pid
+*.lock
+*.db
+*.sqlite*
+
+# OS Files
+.DS_Store
+Thumbs.db

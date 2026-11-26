@@ -1,0 +1,32 @@
+{
+  "no-auto-upload-guard": {
+    "enabled": true,
+    "PreToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python ../scripts/verify_video_gate.py --pre-tool-hook",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "video-gate-verifier": {
+    "enabled": true,
+    "PostToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python ../scripts/verify_video_gate.py --post-tool-hook",
+            "timeout": 20
+          }
+        ]
+      }
+    ]
+  }
+}
